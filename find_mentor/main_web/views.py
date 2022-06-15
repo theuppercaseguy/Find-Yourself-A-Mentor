@@ -422,7 +422,7 @@ def dashboard(request):
                reg_no = c14.fetchall() #reg_no
 
                
-               c13.execute("""select main_web_gikians.reg_no as "gikians_reg_no",main_web_gikians.role,
+               c13.execute("""select main_web_gikians.reg_no as "gikians_reg_no",
 		         main_web_gikians.name,main_web_gikians.year,main_web_gikians.faculty,
 		         main_web_gikians.email
 				
