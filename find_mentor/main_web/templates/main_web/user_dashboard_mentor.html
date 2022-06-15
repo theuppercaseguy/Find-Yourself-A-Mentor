@@ -1,0 +1,618 @@
+{%load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Find Yourself A Mentor</title>
+   
+   <link rel="stylesheet" type="text/css" href="{% static 'main_web/css/bootstrap.css' %}">
+   
+
+   <link rel="stylesheet" href="{% static 'main_web/layout02.css' %}">
+      
+   <link rel="stylesheet" href="{% static 'main_web/buttons.css' %}">
+   
+   <link rel="stylesheet" href="{% static 'main_web/buttons3.css' %}">
+   
+   <link rel="stylesheet" href="{% static 'main_web/ss002.css' %}">
+
+   <link rel="stylesheet" href="{% static 'main_web/dashboard01.css' %}">
+   
+   <script src="{% static '/js/js01.js' %}" type="text/javascript"></script>
+   
+
+
+
+   <style>
+   body,html{
+       overflow-y: auto;
+       background: rgb(62,77,167);
+       background: radial-gradient(circle, rgba(62,77,167,1) 15%, rgba(42,135,204,1) 90%);
+      overflow-y: auto;
+      overflow-x: auto;
+   }
+   .input1,.input2,.input3,.input4{
+      display: flex;   
+      justify-content: center;
+      align-items: center;
+      margin: 2px;
+   }
+   .box1{
+      margin: 4px;;
+
+   }
+   .box1 select {
+      background-color: #666;
+      color: white;
+      padding: 12px;
+      width: 250px;
+      border: none;
+      font-size: 20px;
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+      -webkit-appearance: button;
+      appearance: button;
+      outline: none;
+   }
+
+   .box1::before {
+      content: "\f13a";
+      font-family: FontAwesome;
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 20%;
+      height: 100%;
+      text-align: center;
+      font-size: 28px;
+      line-height: 45px;
+      color: rgba(255, 255, 255, 0.5);
+      background-color: rgba(255, 255, 255, 0.1);
+      pointer-events: none;
+   }
+
+   .box1:hover::before {
+      color: rgba(255, 255, 255, 0.6);
+      background-color: rgba(255, 255, 255, 0.2);
+   }
+
+   .box1 select option {
+      padding: 30px;
+   }
+
+   .sub-data-btn{
+      position: absolute;
+      bottom: 0px;
+      right: 2px;
+   }
+   </style>
+
+   <script>
+      
+     
+
+      document.addEventListener('DOMContentLoaded',function(){
+       
+       var ele1 = document.querySelectorAll('#input-fields main');
+
+       [].forEach.call(ele1, function(ele1){
+          ele1.style.display='none';
+       })
+       
+       document.getElementById('mentees-display-field').style.display='block';
+       
+       // sasdasdasdsa
+       document.getElementById('side-mentees-buttons').onclick = ()=>{
+          
+          [].forEach.call(ele1, function(ele1){
+          ele1.style.display='none';
+          });
+
+          document.getElementById('mentees-display-field').style.display='block';
+
+       };
+
+       document.getElementById('side-best-courses-buttons').onclick = ()=>{
+          [].forEach.call(ele1, function(ele1){
+          ele1.style.display='none';
+          });
+
+          document.getElementById('best-courses-input-field').style.display='block';
+       };
+
+       document.getElementById('side-skills-button').onclick = ()=>{
+          [].forEach.call(ele1, function(ele1){
+          ele1.style.display='none';
+          });
+
+          document.getElementById('skills-input-field').style.display='block';
+       }
+
+       document.getElementById('side-socities-button').onclick = ()=>{
+          [].forEach.call(ele1, function(ele1){
+          ele1.style.display='none';
+          });
+
+          document.getElementById('socities-input-field').style.display='block';
+       }
+
+       document.getElementById('side-teams-button').onclick = ()=>{
+          [].forEach.call(ele1, function(ele1){
+          ele1.style.display='none';
+          });
+
+          document.getElementById('teams-input-field').style.display='block';
+       }
+
+      let btn = document.getElementById('btn');
+      console.log(`bts is: ${btn.innerHTML}`);
+
+      btn.addEventListener("click", function() {
+      btn.setAttribute('class', 'submit process');
+      btn.innerHTML = 'Processing';
+      
+      setTimeout(()=>{
+         btn.setAttribute('class', 'submit submitted');
+         btn.innerHTML = `Submitted`;
+
+      },2000);
+      });
+    })
+      
+     
+   </script>
+
+</head>
+<body class="mentor-dashboard">
+
+   <header class="main-header">
+      <nav class="" id="navbar">
+      
+         <a class="btn1 btn-2" id="home_button" href="{% url 'mentor_links:home'%}"> Home</a>
+      
+         <a id="university-button" class="btn1 btn-2" href="{% url 'mentor_links:uni'%}"> Universities</a>
+      
+         <a id="mentors-button" class="btn1 btn-2" href="{% url 'mentor_links:mentors'%}"> Mentors</a>
+      
+         <a class="btn1 btn-2" href="{% url 'mentor_links:about'%}"> About</a>
+         
+         
+         {%if user.is_authenticated%}
+            {%if user.is_superuser%}
+               <a id="reviews-button" class="btn1 btn-2" href="{% url 'mentor_links:dashboard_super'%}"> {{user.username}}</a>
+               
+            {%else%}
+               <a id="reviews-button" class="btn1 btn-2" href="{% url 'mentor_links:dashboard_user'%}"> {{user.username}}</a>
+
+            {%endif%}
+            
+         
+         {%endif%}
+         
+         {%if user.is_authenticated%} 
+         <a id="signup-button" class="btn btn-1" href="{%url 'logout' %}">
+            <svg>
+               <rect x="0" y="0" fill="none" width="100%" height="100%"/>
+            </svg>
+            LogOut
+      </a>
+         {%else%}
+         <a id="signup-button" class="btn btn-1" href="{% url 'mentor_links:signin'%}">
+            <svg>
+               <rect x="0" y="0" fill="none" width="100%" height="100%"/>
+            </svg>
+            Login 
+            <!-- {{status}} -->
+      </a>
+         {%endif%} 
+      
+
+
+      </nav>
+   </header>
+
+   <nav class="menu" tabindex="0">
+ 
+      <div class="avatar">
+         <img src="" alt="error loading"/>
+       <h2>{{username}}</h2>
+     </div>
+
+     <div id="side-bar">
+
+         <ul>
+               <div id="side-mentees-buttons">
+                  <li tabindex="0" class="icon-users" ><span>Mentees</span></li>
+               </div>
+
+               <div id="side-best-courses-buttons">  
+                  <li tabindex="0" class="icon-customers"><span>Best Courses</span></li>
+               </div>
+
+               <div id="side-skills-button">
+                  <li tabindex="0" class="icon-settings"><span>Skills</span></li>
+               </div>
+
+               <div id="side-socities-button">
+                  <li tabindex="0" class="icon-dashboard"><span>Socities</span></li>
+               </div>
+
+               <div id="side-teams-button">
+                  <li tabindex="0" class="icon-dashboard"><span>Teams</span></li>
+               </div>
+         </ul>
+      
+      </div>   
+   </nav>
+   
+   <div id="input-fields">
+
+      <main id="mentees-display-field">
+         <div class="helper mentors-displays">
+            <div style="color: #ffea92;">
+               Mentees
+            </div>
+            
+            <div id="mentees-info">
+               <span>Mentees Information</span>
+            </div>
+
+            <div class="tables" >
+
+               <table class="table table-hover">
+                  <thead class="table-dark" >
+                     <tr>
+                        <th>Reg #</th>
+                        <th>Name</th>
+                        <th>year</th>
+                        <th>Faculty</th>
+                        <th>Email</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     {%for i in mentee%}
+                     
+                        <tr>
+                           {%for j in  i %}
+                           <td scope="row">{{j}}</td>
+                           {%endfor%}
+                        </tr>
+                     
+                     {%endfor%}
+                     </tr>
+                  </tbody>
+               </table>
+         
+            </div>
+            <div class="selected-mentees">
+
+            </div>
+         
+         </div>
+
+      </main>
+
+
+      <form action="{% url 'mentor_links:dashboard_user'%}" method="post" >
+         {%csrf_token%}
+
+         <main id="best-courses-input-field">
+            <div class="helper mentors-displays">
+               <div>
+               
+                  <div style="color: #ffea92;">
+                     Mentees
+                  </div>
+               </div>
+         
+               <div id="mentees-info">
+                  <span>Best Courses Input</span>
+               </div>
+
+               <div class="input">
+                  <div class="input1">
+                     
+
+
+                     <div>
+                        <h4>Course 1</h4>
+                        <div class="box1"> 
+                           <select name="course_1">
+                              <option>CS101</option>
+                              <option>CS103</option>
+                              <option>CS121</option>
+                              <option>HM102</option>
+                              <option>ES202</option>
+                              <option>EE231</option>
+                              <option>CH102</option>
+                              <option>MM104</option>
+                              <option>CV214</option>
+                              <option>HM211</option>
+                           </select>
+                        </div>
+                     </div>
+                     
+                     <div>
+                        
+                        <h4>Course 2</h4>
+                        <div class="box1">
+                           <select name="cours_2">
+                              <option>CS101</option>
+                              <option>CS103</option>
+                              <option>CS121</option>
+                              <option>HM102</option>
+                              <option>ES202</option>
+                              <option>EE231</option>
+                              <option>CH102</option>
+                              <option>MM104</option>
+                              <option>CV214</option>
+                              <option>HM211</option>
+                           </select>
+                        </div>
+
+                     </div>
+
+                     <div>
+                        <h4>Course 3</h4>
+                        <div class="box1">
+                           
+                           <select name="course_3">
+                              <option>CS101</option>
+                              <option>CS103</option>
+                              <option>CS121</option>
+                              <option>HM102</option>
+                              <option>ES202</option>
+                              <option>EE231</option>
+                              <option>CH102</option>
+                              <option>MM104</option>
+                              <option>CV214</option>
+                              <option>HM211</option>
+                           </select>
+                        </div>
+                     </div>
+                  
+                  </div>
+
+               </div>
+            
+            </div>
+
+         </main>
+
+         <main id="skills-input-field">
+            <div class="helper mentors-displays">
+               
+               <div style="color: #ffea92;">
+                  Skills
+               </div>
+               <div id="mentees-info">
+                  <span>Skills Input</span>
+               </div>
+            
+               <div class="input">
+                  <div class="input2">
+                     
+                     <div>
+                        <h4>SKill 1</h4>
+                        <div class="box1">
+                           <select name="skill_1">
+                              <option>PHOTOSHOP</option>
+                              <option>VIDEO EDITING</option>
+                              <option>CORAL DRAW</option>
+                              <option>CONTENT WRITING</option>
+                              <option>LIASONING</option>
+                              <option>CODING</option>
+                              <option>PROGRAMING</option>
+                              <option>WEB DEVELOPMENT</option>
+                              <option>OFFICE</option>
+                           </select>
+                        </div>
+                     </div>
+                     
+                     <div>
+                        
+                        <h4>Skill 2</h4>
+                        <div class="box1">
+                           <select name="skill_2">
+                              <option>PHOTOSHOP</option>
+                              <option>VIDEO EDITING</option>
+                              <option>CORAL DRAW</option>
+                              <option>CONTENT WRITING</option>
+                              <option>LIASONING</option>
+                              <option>CODING</option>
+                              <option>PROGRAMING</option>
+                              <option>WEB DEVELOPMENT</option>
+                              <option>OFFICE</option>
+                           </select>
+                        </div>
+
+                     </div>
+
+                     <div>
+                        <h4>Skill 3</h4>
+                        <div class="box1">
+                           
+                           <select name="skill_3">
+                              <option>PHOTOSHOP</option>
+                              <option>VIDEO EDITING</option>
+                              <option>CORAL DRAW</option>
+                              <option>CONTENT WRITING</option>
+                              <option>LIASONING</option>
+                              <option>CODING</option>
+                              <option>PROGRAMING</option>
+                              <option>WEB DEVELOPMENT</option>
+                              <option>OFFICE</option>
+                           </select>
+                        </div>
+                     </div>
+                  
+                  </div>
+
+               </div>
+            </div>
+
+         </main>
+
+         <main id="socities-input-field">
+            <div class="helper mentors-displays">
+               
+               <div style="color: #ffea92;">
+                  Socities
+               </div>
+               <div id="mentees-info">
+                  <span>Socities Input</span>
+               </div>
+               <div class="input3">
+                  <div>
+                     <h4>Socity 1</h4>
+                     <div class="box1">
+                        <select name="socity_1">
+                           <option>SCIENCE</option>
+                           <option>SOPHEP</option>
+                           <option>LES</option>
+                           <option>LDS</option>
+                           <option>NETRONIX</option>
+                           <option>IEE</option>
+                           <option>SPIE</option>
+                           <option>IMECHIE</option>
+                           <option>MEDIA</option>
+                           <option>NAQSH</option>
+                           <option>CDES</option>
+                        </select>
+                     </div>
+                  </div>
+                  
+                  <div>
+                     
+                     <h4>Socity 2</h4>
+                     <div class="box1">
+                        <select name="socity_2">
+                           <option>SCIENCE</option>
+                           <option>SOPHEP</option>
+                           <option>LES</option>
+                           <option>LDS</option>
+                           <option>NETRONIX</option>
+                           <option>IEE</option>
+                           <option>SPIE</option>
+                           <option>IMECHIE</option>
+                           <option>MEDIA</option>
+                           <option>NAQSH</option>
+                           <option>CDES</option>
+                        </select>
+                     </div>
+
+                  </div>
+
+                  <div>
+                     <h4>Socity 3</h4>
+                     <div class="box1">
+                        
+                        <select name="socity_3">
+                           <option>SCIENCE</option>
+                           <option>SOPHEP</option>
+                           <option>LES</option>
+                           <option>LDS</option>
+                           <option>NETRONIX</option>
+                           <option>IEE</option>
+                           <option>SPIE</option>
+                           <option>IMECHIE</option>
+                           <option>MEDIA</option>
+                           <option>NAQSH</option>
+                           <option>CDES</option>
+                        </select>
+                     </div>
+                  </div>
+               
+               </div>
+            </div>
+
+         </main>
+
+         <main id="teams-input-field">
+            <div class="helper mentors-displays">
+               
+               <div style="color: #ffea92;">
+                  Teams
+               </div>
+               <div id="mentees-info">
+                  <span>Teams Input</span>
+                  
+               </div>
+               <div class="input4">
+                  <div>
+                     <h4>Team 1</h4>
+                     <div class="box1">
+                        <select name="team_1">
+                           <option>CRICKET</option>
+                           <option>FOOTBALL</option>
+                           <option>BADMINTON</option>
+                           <option>INVICTUS</option>
+                           <option>FOXTROT</option>
+                           <option>TECHNOBOLT</option>
+                           <option>HAMMERHEAD</option>
+                           <option>TRIBE</option>
+
+                        </select>
+                     </div>
+                  </div>
+                  
+                  <div>
+                     
+                     <h4>Team 2</h4>
+                     <div class="box1">
+                        <select name="team_2">
+                           <option>CRICKET</option>
+                           <option>FOOTBALL</option>
+                           <option>BADMINTON</option>
+                           <option>INVICTUS</option>
+                           <option>FOXTROT</option>
+                           <option>TECHNOBOLT</option>
+                           <option>HAMMERHEAD</option>
+                           <option>TRIBE</option>
+
+                        </select>
+                     </div>
+
+                  </div>
+
+                  <div>
+                     <h4>Team 3</h4>
+                     <div class="box1">
+                        
+                        <select name="team_3">
+                           <option>CRICKET</option>
+                           <option>FOOTBALL</option>
+                           <option>BADMINTON</option>
+                           <option>INVICTUS</option>
+                           <option>FOXTROT</option>
+                           <option>TECHNOBOLT</option>
+                           <option>HAMMERHEAD</option>
+                           <option>TRIBE</option>
+
+                        </select>
+                     </div>
+                  </div>
+               
+               </div>
+            </div>
+
+         </main>
+
+         
+
+         <button id="btn" class="submit sub-data-btn" type="submit">
+            Submit
+         </button>
+
+
+      </form>
+
+
+
+   </div>
+
+
+</body>
+</html>

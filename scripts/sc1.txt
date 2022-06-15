@@ -1,0 +1,26 @@
+create or replace trigger mentor_triger
+after insert  on main_web_gikians
+for each row
+
+execute function update_mentor();
+
+
+create or replace function update_mentor()
+returns trigger AS
+$$
+declare
+
+begin
+
+if(new.role = 'mentor') then
+insert into main_web_mentor (reg_no_id,year) values(new.reg_no,new.year);
+
+elseif(new.role = 'mentee' ) then 
+insert into main_web_mentees (reg_id,year_id) values(new.reg_no,new.year);
+end if;
+
+
+return NULL;
+end;
+$$
+language plpgsql;
