@@ -1,0 +1,12 @@
+{% extends "main_web/layout.html" %}
+
+{% block section%}
+   
+   <ul>
+   {%for i in tasks%}
+      <li>{{i}}</li>
+   {%endfor%}
+</ul>
+<a href="{% url 'mentor_links:tasks'%}">goto tasks page</a>
+
+{%endblock%}

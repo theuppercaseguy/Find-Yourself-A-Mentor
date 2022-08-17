@@ -1,0 +1,48 @@
+{% extends "main_web/layout.html"  %}
+
+
+
+{% block center_body %}
+
+
+<section class="border1" id="home_section">
+   <div class="info border1">
+      <div class="nine">
+         <h1 id="heading1">Looking for a mentor?
+            <span id="para">
+               Here you'll find the best mentor suitable for your purposes and ambitions. we have all the qualified Mentors registered with us, that'll help you throughout your journey.
+            </span>
+         </h1>
+       
+      </div>
+    
+   </div>
+
+   <div class="div-for-boxes">
+      <div class="boxes border1">
+         
+         
+         <div class="box-2">
+            <div class="btn2 btn-two">
+              <span>
+               <a href="{% url 'mentor_links:signup'%}" id="find-mentor-txt">  Find A Mentor</a>
+              </span>
+            </div>
+          </div>
+   
+          <div class="box-2">
+            <div class="btn2 btn-two">
+              <span>
+               <a href="{% url 'mentor_links:signup'%}" id="become-mentor-txt">Become A Mentor</a>
+              </span>
+            </div>
+          </div>
+         
+      
+      </div>
+   </div>
+</section>
+
+
+
+{% endblock %}

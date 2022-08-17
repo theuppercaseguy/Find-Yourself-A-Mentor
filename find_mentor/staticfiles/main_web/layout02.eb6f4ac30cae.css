@@ -1,0 +1,141 @@
+.border1{
+   /* border: 2px solid white; */
+}
+
+.main-container{
+   height: 970px;
+   width: auto;
+   background: rgb(2,0,36);
+   background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(46,179,122,1) 46%, rgba(0,212,255,1) 100%);
+   /* background-image: url("images/46515.856c668d2f16.webp"); */
+   /* background-repeat: no-repeat; */
+   background-position: center;
+   background-size: cover;
+}
+
+.main-header{
+   height: 140px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+#navbar{
+   display: flex;
+   flex-flow:row wrap;
+   justify-content: space-around;
+   align-items: center;
+}
+#navbar a{
+   font-size: 25px;
+   margin-top: 10px;
+   margin-bottom: 10px;
+   margin-left: 0px;
+   margin-right: 0px;
+   padding: 2px;
+   text-decoration: none;
+   color: white;
+}
+
+.div-for-boxes{
+   display: flex;
+   justify-content: center; 
+   align-items: center;
+   margin-top: 110px;
+}
+
+.boxes{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   border: 3px solid #ebebeb;
+   height: 350px;
+   width: 600px;
+   border-bottom-right-radius: 150px;
+   border-top-left-radius: 150px;
+   background-color: #112f46;
+
+}
+
+
+.boxes a{
+   margin: 15px;
+   padding: 1px;
+   text-decoration: none;
+   color: white;
+   font-size: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Style 9
+    ----------------------------- */
+    
+#heading1 {
+   position: relative;
+   padding: 0;
+   margin: 0;
+   font-family: "Raleway", sans-serif;
+   font-weight: 300;
+   font-size: 40px;
+   color: #080808;
+   -webkit-transition: all 0.4s ease 0s;
+   -o-transition: all 0.4s ease 0s;
+   transition: all 0.4s ease 0s;
+   top: 50px;
+ }
+ 
+ #heading1 span {
+   display: block;
+   font-size: 0.5em;
+   line-height: 1.3;
+ }
+ #heading1 em {
+   font-style: normal;
+   font-weight: 600;
+ }
+  
+ .nine #heading1 {
+      text-align:center;
+       font-size:50px;
+        text-transform:uppercase;
+       color:#b59999; 
+       letter-spacing:1px;
+      font-family:"Playfair Display", serif; font-weight:400;
+ }
+.nine #heading1 span {
+
+   margin-top: 5px;
+   font-size: 15px;
+   color: #a16c6c;
+   word-spacing: 1px;
+   font-weight: normal;
+   letter-spacing: 2px;
+   text-transform: uppercase;
+   font-family: "Raleway", sans-serif;
+   font-weight: 500;
+   display: grid;
+   grid-template-columns: 1fr 3fr 1fr;
+   grid-template-rows: 101px 0;
+   grid-gap: 20px;
+   align-items: center;
+}
+    
+.nine #heading1 span:after,.nine h1 span:before {
+        content: " ";
+        display: block;
+        border-bottom: 1px solid #ccc;
+        border-top: 1px solid #ccc;
+        height: 5px;
+      background-color:#f8f8f8;
+}
+    
