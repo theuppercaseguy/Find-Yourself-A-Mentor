@@ -1,12 +1,14 @@
 # Find-Yourself-A-Mentor
-a website created for College end semeseter project
- its a website where freshies can find themselves a mentor in a univeristy.
+a website created for the College end semester project
+ its a website where freshies can find themselves a mentor in a university.
+
+## Find-Yourself-A-Mentor in Action
+Link: [youtube](https://www.youtube.com/watch?v=wciPGjFHWxY&ab_channel=ComputerTricksTrilogy)
  
- 
-# Technical Used
-the website is made using django web frame work.
-in the back end we used postgresql as a database
-while on the front end we used HTML,CSS,BOOTSTAP,JAVA SCRIPT.
+# Technologies Used
+The website is made using the Django web frame work.
+On the back end, we used Postgresql as a database
+while on the front end, we used HTML, CSS, BOOTSTAP, and JAVASCRIPT.
 
 # Requirements (that shall be installed in your system)
   1. Git
@@ -15,7 +17,7 @@ while on the front end we used HTML,CSS,BOOTSTAP,JAVA SCRIPT.
   4. Django-admin
 
 # Run On Your Machine?
-  1. Firstly, clone the repository using the git shell 
+  1. Firstly, clone the repository using the git-shell 
       - $ git clone https://github.com/theuppercaseguy/Find-Yourself-A-Mentor.git
   2. Goto the base directory of the project 
      - cd Find-Yourself-A-Mentor
